@@ -1,0 +1,32 @@
+@font-face {
+  font-family: Jersey10;
+  src: url("./font/Jersey10.ttf");
+}
+
+:root {
+  background-color: #141414;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+  min-width: 100vw;
+  min-height: 100vh;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: darkblue;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(200, 200, 200);
+}
