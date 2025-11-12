@@ -1,3 +1,4 @@
+import { useKeyPress } from "@custom-react-hooks/use-key-press";
 import { RotateLeft } from "@mui/icons-material";
 import { Grid, IconButton, ThemeProvider, Tooltip } from "@mui/material";
 import { useEffect, useState, type SyntheticEvent } from "react";
@@ -23,13 +24,25 @@ const App = () => {
   const [expanded, setExpanded] = useState<string | false>(false);
   const [collectibleImg, setCollectibleImg] = useState("");
   const [customOpen, setCustomOpen] = useState(false);
+  const [currHeaderIndex, setCurrHeaderIndex] = useState(0);
+
+  let headers: string[] = [];
+
+  const leftPressed = useKeyPress("ArrowLeft");
+  const rightPressed = useKeyPress("ArrowRight");
 
   const handleAccordionChange =
     (panel: string) => (_: SyntheticEvent, newExpanded: boolean) => {
       setExpanded(newExpanded ? panel : false);
     };
 
-  const getRow = (row: string, monochrome: boolean) => {
+  const reset = () => {
+    headers = [];
+    setTitle("");
+    setCurrHeaderIndex(0);
+  };
+
+  const getRow = (row: string, index: number, monochrome: boolean) => {
     const divider = row.indexOf(" ");
     const color = monochrome ? "#d3d3d3" : row.substring(0, divider);
     let text = monochrome ? row : row.substring(divider + 1);
@@ -37,6 +50,7 @@ const App = () => {
 
     if (isHeader) {
       text = text.substring(1);
+      headers.push(`${index}`);
     }
 
     let count = 0;
@@ -60,8 +74,9 @@ const App = () => {
     };
 
     return (
-      <Grid size={12} key={`${text}-${Math.random()}`}>
+      <Grid size={12} key={index}>
         <SRTypography
+          id={`${index}`}
           header={isHeader}
           text={text}
           backgroundColor={color}
@@ -99,6 +114,19 @@ const App = () => {
       setCollectibleImg("public/img/pagie.png");
     }
   }, [expanded]);
+
+  useEffect(() => {
+    if (leftPressed && currHeaderIndex > 0) {
+      setCurrHeaderIndex(currHeaderIndex - 1);
+    }
+    if (rightPressed && currHeaderIndex < headers.length) {
+      setCurrHeaderIndex(currHeaderIndex + 1);
+    }
+  }, [leftPressed, rightPressed]);
+
+  useEffect(() => {
+    document.getElementById(headers[currHeaderIndex])?.scrollIntoView();
+  }, [currHeaderIndex]);
 
   return (
     <ThemeProvider theme={theme}>
@@ -176,7 +204,7 @@ const App = () => {
               <Tooltip title="Go Back">
                 <IconButton
                   sx={{ backgroundColor: route.headerColor }}
-                  onClick={() => setTitle("")}
+                  onClick={reset}
                 >
                   <RotateLeft />
                 </IconButton>
@@ -186,7 +214,9 @@ const App = () => {
           <Grid container spacing={0}>
             {route.steps
               .filter((t) => t && t.trim().length !== 0)
-              .map((t: string) => getRow(t, route.monochrome || false))}
+              .map((t: string, index: number) => {
+                return getRow(t, index, route.monochrome || false);
+              })}
           </Grid>
         </>
       )}
