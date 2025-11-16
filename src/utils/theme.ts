@@ -52,6 +52,13 @@ export const theme = createTheme({
         }
       }
     },
+    MuiDialogTitle: {
+      styleOverrides: {
+        root: {
+          maxWidth: "90%"
+        }
+      }
+    },
     MuiGrid: {
       styleOverrides: {
         container: {
@@ -67,18 +74,13 @@ export const theme = createTheme({
       styleOverrides: {
         root: {
           color: primary,
-          margin: "auto 1rem",
+          marginLeft: "1rem",
+          marginTop: "-5px",
+          height: "2rem",
+          width: "2rem",
           "&:hover": {
             backgroundColor: "white"
           }
-        }
-      }
-    },
-    MuiTypography: {
-      styleOverrides: {
-        root: {
-          padding: "10px 0",
-          width: "100%"
         }
       }
     }
@@ -92,11 +94,13 @@ export const theme = createTheme({
     fontFamily: "Jersey10",
     fontSize: 16,
     h1: {
+      width: "100%",
       fontSize: "3rem",
       fontWeight: "bold",
       backgroundColor: "rgb(0, 0, 50)"
     },
     h2: {
+      padding: "10px",
       fontSize: "1.5rem",
       fontWeight: "bold"
     },

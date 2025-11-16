@@ -137,7 +137,7 @@ export const dk64Glitchless101: Route = {
     `${dk64Colors.dk} Pound switch, cannon up (45) Leave to Tag by T&S (50)`,
     `${dk64Colors.tiny} Battle Crown, Blueprint & balloon (15)`,
     `${dk64Colors.lanky} 2 Singles (42) get to {9} coins, To W4 Area (52)`,
-    `${dk64Colors.tiny} [Right] Hit W4, Enter stump (28) Get bean, GB, Deathwarp`,
+    `${dk64Colors.tiny} [Right] Hit W4, Enter stump (28) Get bean, GB, deathwarp`,
     `${dk64Colors.tiny} (Fairy here if low on crystals/ammo?) Enter and shoot green tunnel`,
     `${dk64Colors.chunky} [Right] W2 Bananas (51) Hit W1, enter well (56)`,
     `${dk64Colors.chunky} Enter Shed Backdoor, Break Both Boxes, Music Pad (61)`,
