@@ -15,9 +15,11 @@ export const dk64Colors = {
 
 export const dkbColors = {
   header: "#d3d3d3",
-  nan: "#ebde34",
-  three: "#ebc034",
-  five: "#ed4c17"
+  banana: "#ebde34",
+  triple: "#ebc034",
+  quintuple: "#ed4c17",
+  fossil: "#1bb3c1",
+  rareFossil: "#334ff3"
 };
 
 export const yrColors = {

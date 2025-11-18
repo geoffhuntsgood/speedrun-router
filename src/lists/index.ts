@@ -34,7 +34,8 @@ export const allDK64CERoutes: Route[] = [
 export const allDKBRoutes: Route[] = [
   dkb.dkbAny,
   dkb.dkbABAB,
-  dkb.dkbTrueEnding
+  dkb.dkbTrueEnding,
+  dkb.dkb100
 ];
 
 export const allDKBCERoutes: Route[] = [dkbce.dkbceTrans];
